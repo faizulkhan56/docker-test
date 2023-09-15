@@ -16,7 +16,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Install Trivy
+        run: |
+         wget https://github.com/aquasecurity/trivy/releases/latest/download/trivy_0.17.2_Linux-64bit.tar.gz
+         tar zxvf trivy_0.17.2_Linux-64bit.tar.gz
+         sudo mv trivy /usr/local/bin
+
       - name: Build Docker Image
         run: docker build -t faizul56/npmtest .
+
+      - name: Security Scan with Trivy
+        run: |
+          trivy --format json --output /tmp/trivy_report.json faizul56/npmtest
 
 
