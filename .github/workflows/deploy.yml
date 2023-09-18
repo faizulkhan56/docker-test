@@ -45,10 +45,5 @@ jobs:
           path: ${{ github.workspace }}/reports/trivy_report.json
 
 
-      - name: Dependency Review
-        uses: actions/dependency-review-action@v3
-        with:
-          github_token: ${{ secrets.MY_GITHUB_TOKEN }}
-          config-file: './.github/dependabot.yml'
 
 
