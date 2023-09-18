@@ -1,6 +1,7 @@
 name: Deployment on container
 on:
   push:
+  pull_request:
 
 jobs:
   build-on-docker:
