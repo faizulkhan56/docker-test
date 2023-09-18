@@ -29,4 +29,15 @@ jobs:
         run: |
           trivy --format json --output /tmp/trivy_report.json faizul56/npmtest
 
+      - name: Download Trivy Report
+        run: |
+          mkdir -p ${{ github.workspace }}/reports
+          mv /tmp/trivy_report.json ${{ github.workspace }}/reports/
+
+      - name: Upload Trivy Report
+        uses: actions/upload-artifact@v2
+        with:
+          name: trivy-report
+          path: ${{ github.workspace }}/reports/trivy_report.json
+
 
