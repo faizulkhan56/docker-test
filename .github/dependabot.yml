@@ -1,9 +1,10 @@
-version: 3
+version: 2
 updates:
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "daily"
     base: "master" # Specify the base branch
-    head: "master"
+    base_ref: "master"
+    head_ref: "master"
     open-pull-requests-limit: 10
