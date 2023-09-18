@@ -5,4 +5,5 @@ updates:
     schedule:
       interval: "daily"
     base: "master" # Specify the base branch
+    head: "master"
     open-pull-requests-limit: 10
