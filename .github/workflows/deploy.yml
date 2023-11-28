@@ -71,6 +71,14 @@ jobs:
           DEPLOYMENT_COUNT=$(./deployment_count.sh)
           echo "Deployment Count: $DEPLOYMENT_COUNT"
           echo "::set-output name=deployment_count::$DEPLOYMENT_COUNT"
+          echo $DEPLOYMENT_COUNT > deployment-frequency/deployment_count.txt
+
+
+
+  
+
+
+      
 
       
       - name: Download Previous Deployment Frequency
@@ -91,6 +99,9 @@ jobs:
         with:
           name: deployment-frequency
           path: deployment-frequency
+
+
+ 
 
       
       
