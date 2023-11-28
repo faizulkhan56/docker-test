@@ -60,4 +60,17 @@ jobs:
       
       - name: Execute Bash Script
         run: ./deployment_count.sh
+
+
+      - name: Install jq
+        run: sudo apt-get install jq -y
+
+      - name: Capture Deployment Frequency
+        id: deployment_frequency
+        run: |
+          DEPLOYMENT_COUNT=$(./deployment_count.sh)
+          echo "Deployment Count: $DEPLOYMENT_COUNT"
+          echo "::set-output name=deployment_count::$DEPLOYMENT_COUNT"
+
+      
       
