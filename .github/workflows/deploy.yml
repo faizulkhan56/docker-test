@@ -29,20 +29,20 @@ jobs:
       - name: Build Docker Image
         run: docker build -t faizul56/npmtest .
 
-      - name: Security Scan with Trivy
-        run: |
-          trivy --format json --output /tmp/trivy_report.json faizul56/npmtest
+      #- name: Security Scan with Trivy
+      #  run: |
+      #   trivy --format json --output /tmp/trivy_report.json faizul56/npmtest
 
-      - name: Download Trivy Report
-        run: |
-          mkdir -p ${{ github.workspace }}/reports
-          mv /tmp/trivy_report.json ${{ github.workspace }}/reports/
+      #- name: Download Trivy Report
+       # run: |
+        #  mkdir -p ${{ github.workspace }}/reports
+         # mv /tmp/trivy_report.json ${{ github.workspace }}/reports/
 
-      - name: Upload Trivy Report
-        uses: actions/upload-artifact@v2
-        with:
-          name: trivy-report
-          path: ${{ github.workspace }}/reports/trivy_report.json
+      #- name: Upload Trivy Report
+       # uses: actions/upload-artifact@v2
+        #with:
+         # name: trivy-report
+          #path: ${{ github.workspace }}/reports/trivy_report.json
 
 
 
@@ -53,6 +53,9 @@ jobs:
 
       - name: Set up Bash Environment
         run: echo "export GITHUB_TOKEN=\${{ secrets.MY_GITHUB_TOKEN }}" >> $GITHUB_ENV
+
+      - name: Grant Execute Permissions
+        run: chmod +x deployment_count.sh
 
       
       - name: Execute Bash Script
