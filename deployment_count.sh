@@ -1,5 +1,5 @@
 #!/bin/bash
-
+chmod +x deployment_count.sh
 # GitHub repository and token
 REPO="faizulkhan56/docker-test"
 TOKEN=$MY_GITHUB_TOKEN
