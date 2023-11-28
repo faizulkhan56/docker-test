@@ -73,4 +73,25 @@ jobs:
           echo "::set-output name=deployment_count::$DEPLOYMENT_COUNT"
 
       
+      - name: Download Previous Deployment Frequency
+        uses: actions/download-artifact@v2
+        with:
+          name: deployment-frequency
+          path: deployment-frequency
+
+      - name: Append Deployment Count
+        run: |
+          PREVIOUS_COUNT=$(cat deployment-frequency/deployment-frequency.txt || echo 0)
+          NEW_COUNT=$((PREVIOUS_COUNT + DEPLOYMENT_COUNT))
+          echo "$NEW_COUNT" > deployment-frequency/deployment-frequency.txt
+
+
+      - name: Upload Deployment Frequency
+        uses: actions/upload-artifact@v2
+        with:
+          name: deployment-frequency
+          path: deployment-frequency
+
+      
+      
       
