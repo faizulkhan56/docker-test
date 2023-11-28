@@ -51,11 +51,10 @@ jobs:
           docker run --rm -d -p 8080:80 --name npmtest-container faizul56/npmtest
 
 
-      - name: Capture Deployment Frequency
-        run: |
-          # Assuming you have a deployment script or command
-          DEPLOYMENT_COUNT=$(count_deployments_command)
+      - name: Set up Bash Environment
+        run: echo "export GITHUB_TOKEN=\${{ secrets.MY_GITHUB_TOKEN }}" >> $GITHUB_ENV
 
-          # Append to the metrics file
-
-          echo "deployment_frequency{job=\"github-actions\", instance=\"${{ github.run_id }}\"} $DEPLOYMENT_COUNT" >> prometheus-metrics.txt
+      
+      - name: Execute Bash Script
+        run: ./deployment_count.sh
+      
