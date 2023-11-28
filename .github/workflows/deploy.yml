@@ -94,9 +94,9 @@ jobs:
 
       - name: Append Deployment Count
         run: |
-          PREVIOUS_COUNT=$(cat deployment-frequency/deployment-frequency.txt || echo 0)
+          PREVIOUS_COUNT=$(cat deployment-frequency/deployment_count.txt || echo 0)
           NEW_COUNT=$((PREVIOUS_COUNT + DEPLOYMENT_COUNT))
-          echo "$NEW_COUNT" > deployment-frequency/deployment-frequency.txt
+          echo "$NEW_COUNT" > deployment-frequency/deployment_count.txt
 
 
       - name: Upload Deployment Frequency
