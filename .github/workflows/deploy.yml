@@ -75,7 +75,11 @@ jobs:
           echo $DEPLOYMENT_COUNT > deployment-frequency/deployment_count.txt
 
 
-
+      - name: Upload Deployment Frequency
+        uses: actions/upload-artifact@v2
+        with:
+          name: deployment-frequency
+          path: deployment-frequency
   
 
 
